@@ -1,5 +1,4 @@
 // var mozjpeg = require('imagemin-mozjpeg');
-
 module.exports = function(grunt) {
 
   grunt.initConfig({
@@ -140,6 +139,19 @@ module.exports = function(grunt) {
       options: {
         livereload: true,
       },
+    },
+
+    'ftp-deploy': {
+      build: {
+        auth: {
+          host: 'ftp.jonassandstedt.se',
+          port: 21,
+          authKey: 'live'
+        },
+        src: 'public/',
+        dest: 'sagtand-colab/interactive',
+        exclusions: ['.ftppass', '.DS_Store']
+      }
     }
   });
 
@@ -162,8 +174,9 @@ module.exports = function(grunt) {
   // Utillities
   grunt.loadNpmTasks('grunt-devcode');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-ftp-deploy');
 
-  grunt.registerTask('dist', ['sass:dist', 'postcss', 'concat', 'uglify', 'devcode:dist', 'htmlmin:dist', 'inline', 'imagemin']);
+  grunt.registerTask('dist', ['sass:dist', 'postcss', 'concat', 'uglify', 'devcode:dist', 'htmlmin:dist', 'inline', 'imagemin', 'ftp-deploy']);
   grunt.registerTask('dev', ['sass:dev', 'postcss', 'concat', 'htmlmin:dev', 'inline', 'imagemin']);
   grunt.registerTask('default', ['sass:dev', 'postcss', 'concat', 'htmlmin:dev', 'inline', 'imagemin', 'watch']);
 

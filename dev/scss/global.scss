@@ -23,25 +23,28 @@ body, html {
 	background: $primary-color;
 	color: $bg-color;
 	font-size: 0.8em;
-	line-height: 1.5;
+	line-height: 1.9;
 	padding: 0.2em;
 	border-radius: 50%;
-	width: 2em;
-	height: 2em;
+	width: 2.5em;
+	height: 2.5em;
 	text-align: center;
 	margin: 0 0.6em 1em 0;
 	animation: fadeIn 0.2s forwards;
 }
-.note--D2 {
+.note--654 {
 	background: adjust-hue($primary-color, 10%);
 }
-.note--E2 {
+.note--7341 {
 	background: adjust-hue($primary-color, 5.6%);
 }
-.note--G2 {
+.note--8240 {
+	background: inherit;
+}
+.note--9799 {
 	background: adjust-hue($primary-color, 7.5%);
 }
-.note--A2 {
+.note--110 {
 	background: adjust-hue($primary-color, -10%);
 }
 

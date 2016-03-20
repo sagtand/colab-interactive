@@ -3,7 +3,8 @@ var synth = new Tone.SimpleSynth().toMaster(); // Create a synth
 var main = document.querySelector('#main'); // The notes canvas
 var notes = document.querySelector('.notes'); // The notes canvas
 
-var scale = [65.40, 73.41, 82.40, 97.99, 110]; //C penta (C2, D2, E2, G2, A2)
+var scale = [65.40, 73.41, 82.40, 97.99, 110.0]; //C penta (C2, D2, E2, G2, A2)
+//var scaleNames = ['C2', 'D2', 'E2', 'G2', 'A2']; //C penta (C2, D2, E2, G2, A2)
 
 var RandomToneModulation = 100;
 var playedTones = []; //global array for played tones
@@ -22,8 +23,10 @@ function playRandomTone(tone) {
 	console.log(RandomToneModulation);
 	//Write the latest tone to the DOM
 	var newtone = document.createElement('span');
-	var latestTone = playedTones[ playedTones.length -1 ]
-	newtone.innerHTML= '<span class="note note--'+ latestTone +'">' + latestTone + '</span>';
+	var latestTone = playedTones[ playedTones.length -1 ];
+	
+	//take the latest tone, convert to string and replace the decimal with nothing to be used in css
+	newtone.innerHTML= '<span class="note note--'+ latestTone.toString().replace(/\./g, '') +'">' + latestTone + '</span>';
 	notes.appendChild(newtone.firstChild)
 
 	//scroll down

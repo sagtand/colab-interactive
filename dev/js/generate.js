@@ -28,6 +28,9 @@ mc.on("panleft panright tap press", function(ev) {
 	var latestTone = playedTones[ playedTones.length -1 ]
 	newtone.innerHTML= '<span class="note note--'+ latestTone +'">' + latestTone + '</span>';
 	notes.appendChild(newtone.firstChild)
+
+	//scroll down
+	window.scrollTo(0,document.body.scrollHeight);
 	
 });
 

@@ -6,21 +6,23 @@
     "url": "https://Sandstedt@bitbucket.org/fullyflared/html-banner-startup.git"
   },
   "devDependencies": {
+    "autoprefixer": "~6.0.3",
+    "cssnano": "~3.4.0",
+    "csswring": "~4.1.1",
+    "draggabilly": "^2.1.0",
     "grunt": "~0.4.5",
     "grunt-contrib-concat": "~0.5.1",
     "grunt-contrib-copy": "~0.8.1",
+    "grunt-contrib-htmlmin": "~0.4.0",
+    "grunt-contrib-imagemin": "~0.9.4",
     "grunt-contrib-uglify": "~0.9.2",
     "grunt-contrib-watch": "~0.6.1",
+    "grunt-devcode": "~0.0.4",
+    "grunt-inline": "~0.3.6",
     "grunt-postcss": "^0.6.0",
     "grunt-sass": "^1.0.0",
-    "autoprefixer": "~6.0.3",
-    "grunt-contrib-htmlmin":"~0.4.0",
-    "grunt-inline":"~0.3.6",
-    "imagemin-mozjpeg":"5.1.0",
-    "grunt-contrib-imagemin":"~0.9.4",
-    "grunt-devcode":"~0.0.4",
-    "csswring":"~4.1.1",
-    "cssnano":"~3.4.0"
+    "imagemin-mozjpeg": "5.1.0",
+    "tone": "^0.6.1"
   },
   "license": "MIT"
 }

@@ -45,6 +45,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
+          'node_modules/tone/build/Tone.js',
           'dev/js/*.js'
         ],
 

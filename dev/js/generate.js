@@ -3,26 +3,23 @@ var synth = new Tone.SimpleSynth().toMaster(); // Create a synth
 var main = document.querySelector('#main'); // The notes canvas
 var notes = document.querySelector('.notes'); // The notes canvas
 
-var scale = ['C2', 'D2', 'E2', 'G2', 'A2']; //C penta
+var scale = [65.40, 73.41, 82.40, 97.99, 110]; //C penta (C2, D2, E2, G2, A2)
 
-var newRandomTone;
-var playedTones = [];
+var RandomToneModulation = 100;
+var playedTones = []; //global array for played tones
+
 function randomTone(){
 	return scale[Math.floor(Math.random() * scale.length)];
 }
 newRandomTone = randomTone();
 
-// listen to events...
-var mc = new Hammer(main);
-mc.on("panleft panright tap press", function(ev) {
-    //main.textContent = ev.type +" gesture detected.";
 
+function playRandomTone(tone) {
     //Play the synth
-	newRandomTone = randomTone();
-	playedTones.push(newRandomTone);
-	// console.log(playedTones);
-	synth.triggerAttackRelease(newRandomTone, '2n');
-	
+	playedTones.push(tone)
+	synth.triggerAttackRelease(tone, '2n');
+	RandomToneModulation = tone;
+	console.log(RandomToneModulation);
 	//Write the latest tone to the DOM
 	var newtone = document.createElement('span');
 	var latestTone = playedTones[ playedTones.length -1 ]
@@ -31,7 +28,32 @@ mc.on("panleft panright tap press", function(ev) {
 
 	//scroll down
 	window.scrollTo(0,document.body.scrollHeight);
-	
+}
+
+function modulateRandomTone(tone) {
+	RandomToneModulation = RandomToneModulation + tone;
+	console.log(RandomToneModulation);
+	synth.triggerAttackRelease(RandomToneModulation, '2n');
+
+}
+
+
+// INTERACTIVITY________________________________________
+
+// listen to events on main
+var mc = new Hammer(main);
+
+// play random tone on tap
+mc.on("tap press", function(ev) {
+    playRandomTone( randomTone() );
+});
+
+// tone on pan
+mc.on("panright", function(ev) {
+    modulateRandomTone(1);
+});
+mc.on("panleft", function(ev) {
+    modulateRandomTone(-1);
 });
 
 

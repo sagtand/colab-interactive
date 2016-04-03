@@ -41,15 +41,7 @@ function modulateRandomTone(tone) {
 }
 
 
-// INTERACTIVITY________________________________________
 
-// listen to events on main
-var mc = new Hammer(main);
-
-// play random tone on tap
-mc.on("tap press", function(ev) {
-    playRandomTone( randomTone() );
-});
 
 // tone on pan
 

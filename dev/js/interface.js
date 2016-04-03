@@ -29,21 +29,19 @@
 
 				//add to stage;
 				Interface.stage.addChild(Interface.note);
-				console.log(Interface.note);
 				startAnimation();
 			});
 		},
 		resetNote: function(){
-			this.note.position.x = this.width * 0.5 - 62.5; // 500 * 0.25 /2
+			this.note.position.x = this.width * 0.5;
 			this.note.position.y = this.height * 0.5;
 
-			this.note.scale.x = 0.25;
-			this.note.scale.y = 0.25;
+			this.note.scale.x = 0.5;
+			this.note.scale.y = 0.5;
 
-			this.note.pivot.set(250, 250)
+			this.note.pivot.set(250, 250); //half the sprite size
 
 			this.note.alpha = 1;
-			console.log('reset')
 		}
 	}
 	Interface.init();
@@ -53,8 +51,8 @@
 
 		Interface.note.position.x -= 0;
 		Interface.note.position.y += 0;
-		Interface.note.scale.x += 0.005;
-		Interface.note.scale.y += 0.005;
+		Interface.note.scale.x -= 0.005;
+		Interface.note.scale.y -= 0.005;
 		Interface.note.alpha -= 0.01;
 
 		//render the scene

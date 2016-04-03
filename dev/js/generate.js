@@ -52,12 +52,13 @@ mc.on("tap press", function(ev) {
 });
 
 // tone on pan
-mc.on("panright", function(ev) {
-    modulateRandomTone(1);
-});
-mc.on("panleft", function(ev) {
-    modulateRandomTone(-1);
-});
+
+// mc.on("panright", function(ev) {
+//     modulateRandomTone(1);
+// });
+// mc.on("panleft", function(ev) {
+//     modulateRandomTone(-1);
+// });
 
 
 //play a note every quarter-note

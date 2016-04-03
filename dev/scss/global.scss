@@ -13,6 +13,9 @@ body, html {
 	height: 100%;
 	color: $primary-color-invert;
 	padding: 2em;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 .notes {

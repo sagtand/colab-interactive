@@ -48832,16 +48832,16 @@ function modulateRandomTone(tone) {
 		theStage: function() {
 			this.stage = new PIXI.Container();
 			this.note = {};
-
+			var self = this;
 			PIXI.loader.add('note', 'assets/note.png').load(function (loader, resources) {
 				//create a texture
-				Interface.note = new PIXI.Sprite(resources.note.texture);
+				self.note = new PIXI.Sprite(resources.note.texture);
 
 				//start position in center of the scene
-				Interface.resetNote();
+				self.resetNote();
 
 				//add to stage;
-				Interface.stage.addChild(Interface.note);
+				self.stage.addChild(self.note);
 				startAnimation();
 			});
 		},
@@ -48901,4 +48901,5 @@ function modulateRandomTone(tone) {
 
 	// console.log(Interface.renderer);
 })();
+
 </script></body></html>

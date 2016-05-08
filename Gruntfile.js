@@ -46,6 +46,7 @@ module.exports = function(grunt) {
         src: [
           'node_modules/tone/build/Tone.js',
           'node_modules/draggabilly/budist/draggabilly.pkgd.js',
+          'dev/js/*/*.js',
           'dev/js/*.js'
         ],
 

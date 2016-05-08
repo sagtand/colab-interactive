@@ -2,7 +2,7 @@
  * @Author: Jonas Sandstedt | 2016
  * @Description: Sågtand Colab - Interactive
 --><head><meta charset="UTF-8"><title>Colab interactive</title><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link href="https://fonts.googleapis.com/css?family=Dosis:400,600" rel="stylesheet" type="text/css"><style>
-a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:none}table{border-collapse:collapse;border-spacing:0}h1{margin-bottom:1em;text-transform:uppercase}h1,h2{font-size:1.5rem}h2{margin-bottom:.5em}body,html{background:#333;margin:0;padding:0;width:100%;height:100%;font-family:Dosis,sans-serif}*{-webkit-box-sizing:border-box;box-sizing:border-box}#main{width:100%;height:100%;color:#fff;padding:2em;position:absolute;top:0;left:0}.note{display:inline-block;background:#ffff2d;color:#333;font-size:.8em;line-height:1.9;padding:.2em;border-radius:50%;width:2.5em;height:2.5em;text-align:center;margin:0 .6em 1em 0;-webkit-animation:a .2s forwards;animation:a .2s forwards}.note--654{background:#dcff2d}.note--7341{background:#ebff2d}.note--8240{background:inherit}.note--9799{background:#e5ff2d}.note--110{background:#ffdc2d}@-webkit-keyframes a{0%{opacity:0;-webkit-transform:scale(.5);transform:scale(.5)}100{opacity:1;-webkit-transform:scale(1);transform:scale(1)}}@keyframes a{0%{opacity:0;-webkit-transform:scale(.5);transform:scale(.5)}100{opacity:1;-webkit-transform:scale(1);transform:scale(1)}}
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:none}table{border-collapse:collapse;border-spacing:0}h1{text-transform:uppercase}h1,h2{font-size:1.5rem;margin-bottom:.5em;text-align:right}body,html{background:#010066;margin:0;padding:0;width:100%;height:100%;font-family:Dosis,sans-serif}*{-webkit-box-sizing:border-box;box-sizing:border-box}#main{width:100%;height:100%;color:#fff;padding:2em;position:absolute;top:0;left:0}.note{display:inline-block;background:#ffff2d;color:#010066;font-size:.8em;line-height:1.9;padding:.2em;border-radius:50%;width:2.5em;height:2.5em;text-align:center;margin:0 .6em 1em 0;-webkit-animation:a .2s forwards;animation:a .2s forwards}.note--654{background:#dcff2d}.note--7341{background:#ebff2d}.note--8240{background:inherit}.note--9799{background:#e5ff2d}.note--110{background:#ffdc2d}@-webkit-keyframes a{0%{opacity:0;-webkit-transform:scale(.5);transform:scale(.5)}100{opacity:1;-webkit-transform:scale(1);transform:scale(1)}}@keyframes a{0%{opacity:0;-webkit-transform:scale(.5);transform:scale(.5)}100{opacity:1;-webkit-transform:scale(1);transform:scale(1)}}
 </style></head><body><!-- devcode: !production --><!-- ############ GUIDES ############# --><!-- endcode --><div id="main"><h1>Sågtand Colab - Interactive</h1><div class="random-notes"><h2>Played randome tones from C pentatonic scale:</h2><div class="notes"></div></div></div><script>
 (function (root) {
 	"use strict";
@@ -20698,6 +20698,896 @@ THREE.MorphBlendMesh.prototype.setAnimationDuration=function(a,b){var c=this.ani
 THREE.MorphBlendMesh.prototype.getAnimationDuration=function(a){var b=-1;if(a=this.animationsMap[a])b=a.duration;return b};THREE.MorphBlendMesh.prototype.playAnimation=function(a){var b=this.animationsMap[a];b?(b.time=0,b.active=!0):console.warn("THREE.MorphBlendMesh: animation["+a+"] undefined in .playAnimation()")};THREE.MorphBlendMesh.prototype.stopAnimation=function(a){if(a=this.animationsMap[a])a.active=!1};
 THREE.MorphBlendMesh.prototype.update=function(a){for(var b=0,c=this.animationsList.length;b<c;b++){var d=this.animationsList[b];if(d.active){var e=d.duration/d.length;d.time+=d.direction*a;if(d.mirroredLoop){if(d.time>d.duration||0>d.time)d.direction*=-1,d.time>d.duration&&(d.time=d.duration,d.directionBackwards=!0),0>d.time&&(d.time=0,d.directionBackwards=!1)}else d.time%=d.duration,0>d.time&&(d.time+=d.duration);var f=d.start+THREE.Math.clamp(Math.floor(d.time/e),0,d.length-1),g=d.weight;f!==d.currentFrame&&
 (this.morphTargetInfluences[d.lastFrame]=0,this.morphTargetInfluences[d.currentFrame]=1*g,this.morphTargetInfluences[f]=0,d.lastFrame=d.currentFrame,d.currentFrame=f);e=d.time%e/e;d.directionBackwards&&(e=1-e);d.currentFrame!==d.lastFrame?(this.morphTargetInfluences[d.currentFrame]=e*g,this.morphTargetInfluences[d.lastFrame]=(1-e)*g):this.morphTargetInfluences[d.currentFrame]=g}}};
+;/**
+ * Tween.js - Licensed under the MIT license
+ * https://github.com/tweenjs/tween.js
+ * ----------------------------------------------
+ *
+ * See https://github.com/tweenjs/tween.js/graphs/contributors for the full list of contributors.
+ * Thank you all, you're awesome!
+ */
+
+// Include a performance.now polyfill
+(function () {
+
+	if ('performance' in window === false) {
+		window.performance = {};
+	}
+
+	// IE 8
+	Date.now = (Date.now || function () {
+		return new Date().getTime();
+	});
+
+	if ('now' in window.performance === false) {
+		var offset = window.performance.timing && window.performance.timing.navigationStart ? window.performance.timing.navigationStart
+		                                                                                    : Date.now();
+
+		window.performance.now = function () {
+			return Date.now() - offset;
+		};
+	}
+
+})();
+
+var TWEEN = TWEEN || (function () {
+
+	var _tweens = [];
+
+	return {
+
+		getAll: function () {
+
+			return _tweens;
+
+		},
+
+		removeAll: function () {
+
+			_tweens = [];
+
+		},
+
+		add: function (tween) {
+
+			_tweens.push(tween);
+
+		},
+
+		remove: function (tween) {
+
+			var i = _tweens.indexOf(tween);
+
+			if (i !== -1) {
+				_tweens.splice(i, 1);
+			}
+
+		},
+
+		update: function (time) {
+
+			if (_tweens.length === 0) {
+				return false;
+			}
+
+			var i = 0;
+
+			time = time !== undefined ? time : window.performance.now();
+
+			while (i < _tweens.length) {
+
+				if (_tweens[i].update(time)) {
+					i++;
+				} else {
+					_tweens.splice(i, 1);
+				}
+
+			}
+
+			return true;
+
+		}
+	};
+
+})();
+
+TWEEN.Tween = function (object) {
+
+	var _object = object;
+	var _valuesStart = {};
+	var _valuesEnd = {};
+	var _valuesStartRepeat = {};
+	var _duration = 1000;
+	var _repeat = 0;
+	var _yoyo = false;
+	var _isPlaying = false;
+	var _reversed = false;
+	var _delayTime = 0;
+	var _startTime = null;
+	var _easingFunction = TWEEN.Easing.Linear.None;
+	var _interpolationFunction = TWEEN.Interpolation.Linear;
+	var _chainedTweens = [];
+	var _onStartCallback = null;
+	var _onStartCallbackFired = false;
+	var _onUpdateCallback = null;
+	var _onCompleteCallback = null;
+	var _onStopCallback = null;
+
+	// Set all starting values present on the target object
+	for (var field in object) {
+		_valuesStart[field] = parseFloat(object[field], 10);
+	}
+
+	this.to = function (properties, duration) {
+
+		if (duration !== undefined) {
+			_duration = duration;
+		}
+
+		_valuesEnd = properties;
+
+		return this;
+
+	};
+
+	this.start = function (time) {
+
+		TWEEN.add(this);
+
+		_isPlaying = true;
+
+		_onStartCallbackFired = false;
+
+		_startTime = time !== undefined ? time : window.performance.now();
+		_startTime += _delayTime;
+
+		for (var property in _valuesEnd) {
+
+			// Check if an Array was provided as property value
+			if (_valuesEnd[property] instanceof Array) {
+
+				if (_valuesEnd[property].length === 0) {
+					continue;
+				}
+
+				// Create a local copy of the Array with the start value at the front
+				_valuesEnd[property] = [_object[property]].concat(_valuesEnd[property]);
+
+			}
+
+			// If `to()` specifies a property that doesn't exist in the source object,
+			// we should not set that property in the object
+			if (_valuesStart[property] === undefined) {
+				continue;
+			}
+
+			_valuesStart[property] = _object[property];
+
+			if ((_valuesStart[property] instanceof Array) === false) {
+				_valuesStart[property] *= 1.0; // Ensures we're using numbers, not strings
+			}
+
+			_valuesStartRepeat[property] = _valuesStart[property] || 0;
+
+		}
+
+		return this;
+
+	};
+
+	this.stop = function () {
+
+		if (!_isPlaying) {
+			return this;
+		}
+
+		TWEEN.remove(this);
+		_isPlaying = false;
+
+		if (_onStopCallback !== null) {
+			_onStopCallback.call(_object);
+		}
+
+		this.stopChainedTweens();
+		return this;
+
+	};
+
+	this.stopChainedTweens = function () {
+
+		for (var i = 0, numChainedTweens = _chainedTweens.length; i < numChainedTweens; i++) {
+			_chainedTweens[i].stop();
+		}
+
+	};
+
+	this.delay = function (amount) {
+
+		_delayTime = amount;
+		return this;
+
+	};
+
+	this.repeat = function (times) {
+
+		_repeat = times;
+		return this;
+
+	};
+
+	this.yoyo = function (yoyo) {
+
+		_yoyo = yoyo;
+		return this;
+
+	};
+
+
+	this.easing = function (easing) {
+
+		_easingFunction = easing;
+		return this;
+
+	};
+
+	this.interpolation = function (interpolation) {
+
+		_interpolationFunction = interpolation;
+		return this;
+
+	};
+
+	this.chain = function () {
+
+		_chainedTweens = arguments;
+		return this;
+
+	};
+
+	this.onStart = function (callback) {
+
+		_onStartCallback = callback;
+		return this;
+
+	};
+
+	this.onUpdate = function (callback) {
+
+		_onUpdateCallback = callback;
+		return this;
+
+	};
+
+	this.onComplete = function (callback) {
+
+		_onCompleteCallback = callback;
+		return this;
+
+	};
+
+	this.onStop = function (callback) {
+
+		_onStopCallback = callback;
+		return this;
+
+	};
+
+	this.update = function (time) {
+
+		var property;
+		var elapsed;
+		var value;
+
+		if (time < _startTime) {
+			return true;
+		}
+
+		if (_onStartCallbackFired === false) {
+
+			if (_onStartCallback !== null) {
+				_onStartCallback.call(_object);
+			}
+
+			_onStartCallbackFired = true;
+
+		}
+
+		elapsed = (time - _startTime) / _duration;
+		elapsed = elapsed > 1 ? 1 : elapsed;
+
+		value = _easingFunction(elapsed);
+
+		for (property in _valuesEnd) {
+
+			// Don't update properties that do not exist in the source object
+			if (_valuesStart[property] === undefined) {
+				continue;
+			}
+
+			var start = _valuesStart[property] || 0;
+			var end = _valuesEnd[property];
+
+			if (end instanceof Array) {
+
+				_object[property] = _interpolationFunction(end, value);
+
+			} else {
+
+				// Parses relative end values with start as base (e.g.: +10, -3)
+				if (typeof (end) === 'string') {
+
+					if (end.startsWith('+') || end.startsWith('-')) {
+						end = start + parseFloat(end, 10);
+					} else {
+						end = parseFloat(end, 10);
+					}
+				}
+
+				// Protect against non numeric properties.
+				if (typeof (end) === 'number') {
+					_object[property] = start + (end - start) * value;
+				}
+
+			}
+
+		}
+
+		if (_onUpdateCallback !== null) {
+			_onUpdateCallback.call(_object, value);
+		}
+
+		if (elapsed === 1) {
+
+			if (_repeat > 0) {
+
+				if (isFinite(_repeat)) {
+					_repeat--;
+				}
+
+				// Reassign starting values, restart by making startTime = now
+				for (property in _valuesStartRepeat) {
+
+					if (typeof (_valuesEnd[property]) === 'string') {
+						_valuesStartRepeat[property] = _valuesStartRepeat[property] + parseFloat(_valuesEnd[property], 10);
+					}
+
+					if (_yoyo) {
+						var tmp = _valuesStartRepeat[property];
+
+						_valuesStartRepeat[property] = _valuesEnd[property];
+						_valuesEnd[property] = tmp;
+					}
+
+					_valuesStart[property] = _valuesStartRepeat[property];
+
+				}
+
+				if (_yoyo) {
+					_reversed = !_reversed;
+				}
+
+				_startTime = time + _delayTime;
+
+				return true;
+
+			} else {
+
+				if (_onCompleteCallback !== null) {
+					_onCompleteCallback.call(_object);
+				}
+
+				for (var i = 0, numChainedTweens = _chainedTweens.length; i < numChainedTweens; i++) {
+					// Make the chained tweens start exactly at the time they should,
+					// even if the `update()` method was called way past the duration of the tween
+					_chainedTweens[i].start(_startTime + _duration);
+				}
+
+				return false;
+
+			}
+
+		}
+
+		return true;
+
+	};
+
+};
+
+
+TWEEN.Easing = {
+
+	Linear: {
+
+		None: function (k) {
+
+			return k;
+
+		}
+
+	},
+
+	Quadratic: {
+
+		In: function (k) {
+
+			return k * k;
+
+		},
+
+		Out: function (k) {
+
+			return k * (2 - k);
+
+		},
+
+		InOut: function (k) {
+
+			if ((k *= 2) < 1) {
+				return 0.5 * k * k;
+			}
+
+			return - 0.5 * (--k * (k - 2) - 1);
+
+		}
+
+	},
+
+	Cubic: {
+
+		In: function (k) {
+
+			return k * k * k;
+
+		},
+
+		Out: function (k) {
+
+			return --k * k * k + 1;
+
+		},
+
+		InOut: function (k) {
+
+			if ((k *= 2) < 1) {
+				return 0.5 * k * k * k;
+			}
+
+			return 0.5 * ((k -= 2) * k * k + 2);
+
+		}
+
+	},
+
+	Quartic: {
+
+		In: function (k) {
+
+			return k * k * k * k;
+
+		},
+
+		Out: function (k) {
+
+			return 1 - (--k * k * k * k);
+
+		},
+
+		InOut: function (k) {
+
+			if ((k *= 2) < 1) {
+				return 0.5 * k * k * k * k;
+			}
+
+			return - 0.5 * ((k -= 2) * k * k * k - 2);
+
+		}
+
+	},
+
+	Quintic: {
+
+		In: function (k) {
+
+			return k * k * k * k * k;
+
+		},
+
+		Out: function (k) {
+
+			return --k * k * k * k * k + 1;
+
+		},
+
+		InOut: function (k) {
+
+			if ((k *= 2) < 1) {
+				return 0.5 * k * k * k * k * k;
+			}
+
+			return 0.5 * ((k -= 2) * k * k * k * k + 2);
+
+		}
+
+	},
+
+	Sinusoidal: {
+
+		In: function (k) {
+
+			return 1 - Math.cos(k * Math.PI / 2);
+
+		},
+
+		Out: function (k) {
+
+			return Math.sin(k * Math.PI / 2);
+
+		},
+
+		InOut: function (k) {
+
+			return 0.5 * (1 - Math.cos(Math.PI * k));
+
+		}
+
+	},
+
+	Exponential: {
+
+		In: function (k) {
+
+			return k === 0 ? 0 : Math.pow(1024, k - 1);
+
+		},
+
+		Out: function (k) {
+
+			return k === 1 ? 1 : 1 - Math.pow(2, - 10 * k);
+
+		},
+
+		InOut: function (k) {
+
+			if (k === 0) {
+				return 0;
+			}
+
+			if (k === 1) {
+				return 1;
+			}
+
+			if ((k *= 2) < 1) {
+				return 0.5 * Math.pow(1024, k - 1);
+			}
+
+			return 0.5 * (- Math.pow(2, - 10 * (k - 1)) + 2);
+
+		}
+
+	},
+
+	Circular: {
+
+		In: function (k) {
+
+			return 1 - Math.sqrt(1 - k * k);
+
+		},
+
+		Out: function (k) {
+
+			return Math.sqrt(1 - (--k * k));
+
+		},
+
+		InOut: function (k) {
+
+			if ((k *= 2) < 1) {
+				return - 0.5 * (Math.sqrt(1 - k * k) - 1);
+			}
+
+			return 0.5 * (Math.sqrt(1 - (k -= 2) * k) + 1);
+
+		}
+
+	},
+
+	Elastic: {
+
+		In: function (k) {
+
+			var s;
+			var a = 0.1;
+			var p = 0.4;
+
+			if (k === 0) {
+				return 0;
+			}
+
+			if (k === 1) {
+				return 1;
+			}
+
+			if (!a || a < 1) {
+				a = 1;
+				s = p / 4;
+			} else {
+				s = p * Math.asin(1 / a) / (2 * Math.PI);
+			}
+
+			return - (a * Math.pow(2, 10 * (k -= 1)) * Math.sin((k - s) * (2 * Math.PI) / p));
+
+		},
+
+		Out: function (k) {
+
+			var s;
+			var a = 0.1;
+			var p = 0.4;
+
+			if (k === 0) {
+				return 0;
+			}
+
+			if (k === 1) {
+				return 1;
+			}
+
+			if (!a || a < 1) {
+				a = 1;
+				s = p / 4;
+			} else {
+				s = p * Math.asin(1 / a) / (2 * Math.PI);
+			}
+
+			return (a * Math.pow(2, - 10 * k) * Math.sin((k - s) * (2 * Math.PI) / p) + 1);
+
+		},
+
+		InOut: function (k) {
+
+			var s;
+			var a = 0.1;
+			var p = 0.4;
+
+			if (k === 0) {
+				return 0;
+			}
+
+			if (k === 1) {
+				return 1;
+			}
+
+			if (!a || a < 1) {
+				a = 1;
+				s = p / 4;
+			} else {
+				s = p * Math.asin(1 / a) / (2 * Math.PI);
+			}
+
+			if ((k *= 2) < 1) {
+				return - 0.5 * (a * Math.pow(2, 10 * (k -= 1)) * Math.sin((k - s) * (2 * Math.PI) / p));
+			}
+
+			return a * Math.pow(2, -10 * (k -= 1)) * Math.sin((k - s) * (2 * Math.PI) / p) * 0.5 + 1;
+
+		}
+
+	},
+
+	Back: {
+
+		In: function (k) {
+
+			var s = 1.70158;
+
+			return k * k * ((s + 1) * k - s);
+
+		},
+
+		Out: function (k) {
+
+			var s = 1.70158;
+
+			return --k * k * ((s + 1) * k + s) + 1;
+
+		},
+
+		InOut: function (k) {
+
+			var s = 1.70158 * 1.525;
+
+			if ((k *= 2) < 1) {
+				return 0.5 * (k * k * ((s + 1) * k - s));
+			}
+
+			return 0.5 * ((k -= 2) * k * ((s + 1) * k + s) + 2);
+
+		}
+
+	},
+
+	Bounce: {
+
+		In: function (k) {
+
+			return 1 - TWEEN.Easing.Bounce.Out(1 - k);
+
+		},
+
+		Out: function (k) {
+
+			if (k < (1 / 2.75)) {
+				return 7.5625 * k * k;
+			} else if (k < (2 / 2.75)) {
+				return 7.5625 * (k -= (1.5 / 2.75)) * k + 0.75;
+			} else if (k < (2.5 / 2.75)) {
+				return 7.5625 * (k -= (2.25 / 2.75)) * k + 0.9375;
+			} else {
+				return 7.5625 * (k -= (2.625 / 2.75)) * k + 0.984375;
+			}
+
+		},
+
+		InOut: function (k) {
+
+			if (k < 0.5) {
+				return TWEEN.Easing.Bounce.In(k * 2) * 0.5;
+			}
+
+			return TWEEN.Easing.Bounce.Out(k * 2 - 1) * 0.5 + 0.5;
+
+		}
+
+	}
+
+};
+
+TWEEN.Interpolation = {
+
+	Linear: function (v, k) {
+
+		var m = v.length - 1;
+		var f = m * k;
+		var i = Math.floor(f);
+		var fn = TWEEN.Interpolation.Utils.Linear;
+
+		if (k < 0) {
+			return fn(v[0], v[1], f);
+		}
+
+		if (k > 1) {
+			return fn(v[m], v[m - 1], m - f);
+		}
+
+		return fn(v[i], v[i + 1 > m ? m : i + 1], f - i);
+
+	},
+
+	Bezier: function (v, k) {
+
+		var b = 0;
+		var n = v.length - 1;
+		var pw = Math.pow;
+		var bn = TWEEN.Interpolation.Utils.Bernstein;
+
+		for (var i = 0; i <= n; i++) {
+			b += pw(1 - k, n - i) * pw(k, i) * v[i] * bn(n, i);
+		}
+
+		return b;
+
+	},
+
+	CatmullRom: function (v, k) {
+
+		var m = v.length - 1;
+		var f = m * k;
+		var i = Math.floor(f);
+		var fn = TWEEN.Interpolation.Utils.CatmullRom;
+
+		if (v[0] === v[m]) {
+
+			if (k < 0) {
+				i = Math.floor(f = m * (1 + k));
+			}
+
+			return fn(v[(i - 1 + m) % m], v[i], v[(i + 1) % m], v[(i + 2) % m], f - i);
+
+		} else {
+
+			if (k < 0) {
+				return v[0] - (fn(v[0], v[0], v[1], v[1], -f) - v[0]);
+			}
+
+			if (k > 1) {
+				return v[m] - (fn(v[m], v[m], v[m - 1], v[m - 1], f - m) - v[m]);
+			}
+
+			return fn(v[i ? i - 1 : 0], v[i], v[m < i + 1 ? m : i + 1], v[m < i + 2 ? m : i + 2], f - i);
+
+		}
+
+	},
+
+	Utils: {
+
+		Linear: function (p0, p1, t) {
+
+			return (p1 - p0) * t + p0;
+
+		},
+
+		Bernstein: function (n, i) {
+
+			var fc = TWEEN.Interpolation.Utils.Factorial;
+
+			return fc(n) / fc(i) / fc(n - i);
+
+		},
+
+		Factorial: (function () {
+
+			var a = [1];
+
+			return function (n) {
+
+				var s = 1;
+
+				if (a[n]) {
+					return a[n];
+				}
+
+				for (var i = n; i > 1; i--) {
+					s *= i;
+				}
+
+				a[n] = s;
+				return s;
+
+			};
+
+		})(),
+
+		CatmullRom: function (p0, p1, p2, p3, t) {
+
+			var v0 = (p2 - p0) * 0.5;
+			var v1 = (p3 - p1) * 0.5;
+			var t2 = t * t;
+			var t3 = t * t2;
+
+			return (2 * p1 - 2 * p2 + v0 + v1) * t3 + (- 3 * p1 + 3 * p2 - 2 * v0 - v1) * t2 + v0 * t + p1;
+
+		}
+
+	}
+
+};
+
+// UMD (Universal Module Definition)
+(function (root) {
+
+	if (typeof define === 'function' && define.amd) {
+
+		// AMD
+		define([], function () {
+			return TWEEN;
+		});
+
+	} else if (typeof module !== 'undefined' && typeof exports === 'object') {
+
+		// Node.js
+		module.exports = TWEEN;
+
+	} else if (root !== undefined) {
+
+		// Global variable
+		root.TWEEN = TWEEN;
+
+	}
+
+})(this);
 ;// stats.js - http://github.com/mrdoob/stats.js
 var Stats=function(){function h(a){c.appendChild(a.dom);return a}function k(a){for(var d=0;d<c.children.length;d++)c.children[d].style.display=d===a?"block":"none";l=a}var l=0,c=document.createElement("div");c.style.cssText="position:fixed;top:0;left:0;cursor:pointer;opacity:0.9;z-index:10000";c.addEventListener("click",function(a){a.preventDefault();k(++l%c.children.length)},!1);var g=(performance||Date).now(),e=g,a=0,r=h(new Stats.Panel("FPS","#0ff","#002")),f=h(new Stats.Panel("MS","#0f0","#020"));
 if(self.performance&&self.performance.memory)var t=h(new Stats.Panel("MB","#f08","#201"));k(0);return{REVISION:16,dom:c,addPanel:h,showPanel:k,begin:function(){g=(performance||Date).now()},end:function(){a++;var c=(performance||Date).now();f.update(c-g,200);if(c>e+1E3&&(r.update(1E3*a/(c-e),100),e=c,a=0,t)){var d=performance.memory;t.update(d.usedJSHeapSize/1048576,d.jsHeapSizeLimit/1048576)}return c},update:function(){g=this.end()},domElement:c,setMode:k}};
@@ -20709,13 +21599,13 @@ var main = document.querySelector('#main'); // The notes canvas
 var notes = document.querySelector('.notes'); // The notes canvas
 
 var scale = [65.40, 73.41, 82.40, 97.99, 110.0]; //C penta (C2, D2, E2, G2, A2)
-//var scaleNames = ['C2', 'D2', 'E2', 'G2', 'A2']; //C penta (C2, D2, E2, G2, A2)
+scaleTones = scale.length;
 
 var RandomToneModulation = 100;
 var playedTones = []; //global array for played tones
 
 function randomTone(){
-	return scale[Math.floor(Math.random() * scale.length)];
+	return Math.floor(Math.random() * scale.length);
 }
 newRandomTone = randomTone();
 
@@ -20731,8 +21621,8 @@ function playRandomTone(tone) {
 	var latestTone = playedTones[ playedTones.length -1 ];
 	
 	//take the latest tone, convert to string and replace the decimal with nothing to be used in css
-	newtone.innerHTML= '<span class="note note--'+ latestTone.toString().replace(/\./g, '') +'">' + latestTone + '</span>';
-	notes.appendChild(newtone.firstChild)
+	// newtone.innerHTML= '<span class="note note--'+ latestTone.toString().replace(/\./g, '') +'">' + latestTone + '</span>';
+	// notes.appendChild(newtone.firstChild)
 
 	//scroll down
 	window.scrollTo(0,document.body.scrollHeight);
@@ -20768,88 +21658,154 @@ function modulateRandomTone(tone) {
 
 //loop between the first and fourth measures of the Transport's timeline
 
-;(function(){
-	// Get screen dimensions
+;// Get screen dimensions
+var width, height, aspect, pixelRatio, scene, camera, sphere, geo, mesh, dot, renderer, stats;
 
-	var Interface = {
-		init: function() {
-			
-			this.setScreen();
-			this.setScene();
-			this.setStats();
-			this.setRenderer();
-			this.onResize();
-			animate();
-			// this.animate();
-		},
-		setScreen: function() {
-			this.width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-			this.height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-			this.aspect = this.width / this.height;
-			this.pixelRatio = window.devicePixelRatio;
-		},
-		setScene: function() {
-			this.scene = new THREE.Scene();
-			this.camera = new THREE.PerspectiveCamera(25, this.aspect, 1, 10000);
-			this.camera.position.z = 2000;
-			this.scene.add(this.camera);
+var Interface = {
+	init: function() {	
+		setScreen();
+		setScene();
+		setStats();
+		setRenderer();
+		onResize();
+		// tweenAnimate(0,0,200,200);
+		animate();
 
-			//The objects
-			this.cube = new THREE.OctahedronGeometry(200,2);
-			this.material = new THREE.MeshBasicMaterial({color: 0x0000FF, wireframe: true});
-			this.mesh = new THREE.Mesh(this.cube, this.material);
-			this.scene.add(this.mesh);
-		},
-		setRenderer: function(){
-			this.renderer = new THREE.WebGLRenderer( { antialias: true } );
-			this.renderer.setClearColor( 0xf0f0f0 );
-			this.renderer.setPixelRatio( this.pixelRatio );
-			document.body.appendChild(this.renderer.domElement);
-		},
-		setStats: function() {
-			this.stats = new Stats();
-			document.body.appendChild(this.stats.domElement);
-		},
-		onResize: function() {
-			this.setScreen();
-			this.camera.aspect = this.aspect;
-			this.camera.updateProjectionMatrix();
-			this.renderer.setSize(this.width, this.height);
-		}	
-		// animate: function(){
-			
-		// }
-		// resetNote: function(){
-		// 	this.note.position.x = this.width * 0.5;
-		// 	this.note.position.y = this.height * 0.5;
-
-		// 	this.note.scale.x = 0.5;
-		// 	this.note.scale.y = 0.5;
-
-		// 	this.note.pivot.set(250, 250); //half the sprite size
-
-		// 	this.note.alpha = 1;
-		// }
+		// this.animate();
+		// document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 	}
-	Interface.init();
+}
 
-	function animate(){
-		requestAnimationFrame( function(){ animate() } );
+setScreen = function() {
+	width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+	height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+	aspect = width / height;
+	pixelRatio = window.devicePixelRatio;
+};
 
-		Interface.mesh.rotation.x += 0.005;
-		Interface.mesh.rotation.y += 0.001;
+setScene = function() {
+	scene = new THREE.Scene();
+	camera = new THREE.PerspectiveCamera(25, aspect, 1, 10000);
+	camera.position.z = 2000;
+	scene.add(camera);
 
-		Interface.renderer.render(Interface.scene, Interface.camera);
-		Interface.stats.update();
-	};
+	//The objects
+	geo = [ 
+		plane = new THREE.PlaneBufferGeometry( 250, 250, 1, 1 ),
+		tetra = new THREE.TetrahedronGeometry(200,0),
+		octa = new THREE.OctahedronGeometry(200,0),
+		box = new THREE.BoxGeometry(200,200,200),
+		iso = new THREE.IcosahedronGeometry(200,0)
+	];
+	sphere = new THREE.CircleGeometry( 4, 64 );
+	// geo0 = new THREE.PlaneBufferGeometry( 250, 250, 1, 1 );
+	// geo1 = new THREE.TetrahedronGeometry(200,0);
+	// geo2 = new THREE.OctahedronGeometry(200,0);
+	// geo3 = new THREE.BoxGeometry(200,200,200);
+	// geo4 = new THREE.IcosahedronGeometry(200,0);
 
-		console.log(Interface);
+	material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: true});
+	solid = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: false});
+
+	mesh = new THREE.Mesh(geo[4], material);
+	dot = new THREE.Mesh(sphere, solid);
+	scene.add(mesh);
+	scene.add(dot);
+	console.log(mesh);
+};
+
+setRenderer = function(){
+	renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
+	renderer.setPixelRatio( pixelRatio );
+	renderer.setClearColor( 0xffffff, 0);
+	document.body.appendChild(renderer.domElement);
+}
+render = function() {
+	renderer.render( scene, camera );
+}
+setStats = function() {
+	stats = new Stats();
+	document.body.appendChild(stats.domElement);
+};
+onResize = function() {
+	setScreen();
+	camera.aspect = aspect;
+	camera.updateProjectionMatrix();
+	renderer.setSize(width, height);
+};
+// animate: function(){
+	
+// }
+// resetNote: function(){
+// 	this.note.position.x = this.width * 0.5;
+// 	this.note.position.y = this.height * 0.5;
+
+// 	this.note.scale.x = 0.5;
+// 	this.note.scale.y = 0.5;
+
+// 	this.note.pivot.set(250, 250); //half the sprite size
+
+// 	this.note.alpha = 1;
+// }	
+
+tweenAnimate = function(posX, posY, posZ, tarX, tarY, tarZ, setMesh, object){
+	position = { x : posX, y: posY, z: posZ };
+	target = { x : tarX, y: tarY, z: tarZ };
+	tween = new TWEEN.Tween(position).to(target, 800);
+	// tween.delay(500);
+	tween.easing(TWEEN.Easing.Quartic.Out);
+
+	//change the mesh
+	object.geometry = setMesh;
+
+	tween.onUpdate(function(){
+		object.position.x = position.x;
+		object.position.y = position.y;
+		object.position.z = position.z;
+		// console.log(mesh.position.x);
+	});
+	tween.start();
+}
+
+//denna funktion funkar ej...
+tweenScale = function(object, scale){
+	sPosition = { x : 0, y : 0 };
+	sTarget = { x : scale, y : scale };
+	scale = new TWEEN.Tween(sPosition).to(sTarget, 800);
+	// tween.delay(500);
+	scale.easing(TWEEN.Easing.Quartic.Out);
+
+	scale.onUpdate(function(){
+		object.scale.x = sPosition.x;
+		object.scale.y = sPosition.y;
+		// console.log(mesh.sPosition.x);
+	});
+	scale.start();
+}
+
+animate = function(){
+	// console.log(position);
+	requestAnimationFrame( animate );
+
+	mesh.rotation.x += 0.005;
+	mesh.rotation.y += 0.001;
+	TWEEN.update();
+
+	render();
+	stats.update();
+	// console.log(tween);
+};
+
+
+
+Interface.init();
+
 
 // 	function startAnimation(){
 // 		requestAnimationFrame( startAnimation );
 // 		// console.log('hej');
 
-		
+	
 
 // 		// requestAnimationFrame(startAnimation);
 
@@ -20864,34 +21820,77 @@ function modulateRandomTone(tone) {
 // 	}
 // 	startAnimation();
 
-	window.onresize = function(){
-		Interface.onResize();
-		
-		// Interface.renderer.width = Interface.width;
-		// Interface.renderer.height = Interface.height;
-		
-		// Interface.renderer.view.style.width = Interface.width + "px";    
-		// Interface.renderer.view.style.height = Interface.height + "px";    
-		
-		//this part adjusts the ratio:    
-		// Interface.renderer.resize(Interface.width, Interface.height);
+window.onresize = function(){
+	onResize();
+	
+	// Interface.renderer.width = Interface.width;
+	// Interface.renderer.height = Interface.height;
+	
+	// Interface.renderer.view.style.width = Interface.width + "px";    
+	// Interface.renderer.view.style.height = Interface.height + "px";    
+	
+	//this part adjusts the ratio:    
+	// Interface.renderer.resize(Interface.width, Interface.height);
 
-	}
+}
 
 
 
-	// INTERACTIVITY________________________________________
+// INTERACTIVITY________________________________________
 
-	// listen to events on main
-	var mc = new Hammer(main);
+// listen to events on main
+var mc = new Hammer(main);
 
-	// play random tone on tap
-	mc.on("tap press", function(ev) {
-	    playRandomTone( randomTone() );
-	    // Interface.resetNote();
-	});
+// play random tone on tap
+mc.on("tap press", function(ev) {
 
-// 	// console.log(Interface.renderer);
-})();
+
+    newRandomTone = randomTone();
+    playRandomTone( scale[newRandomTone] );
+
+    // Interface.resetNote();
+    console.log(newRandomTone);
+    
+	// From: X, Y, Z
+	// To: X, Y, Z
+	// Geometry
+	tweenAnimate(
+		mesh.position.x, mesh.position.y, mesh.position.z, 
+		0, newRandomTone*40-80, newRandomTone*100-100,
+		geo[newRandomTone],
+		mesh);
+
+	tweenAnimate(
+		mesh.position.x, mesh.position.y, mesh.position.z, 
+		0, newRandomTone*40-80, newRandomTone*100-100,
+		sphere,
+		dot);
+
+	tweenScale(dot, (newRandomTone+1)*2 );
+
+	// sPosition = { x : object.scale.x, y : object.scale.y };
+	// sTarget = { x : object.scale.x*scale, y : object.scale.y*scale };
+	// scale = new TWEEN.Tween(sPosition).to(sTarget, 800);
+	// // tween.delay(500);
+	// scale.easing(TWEEN.Easing.Quartic.Out);
+
+	// scale.onUpdate(function(){
+	// 	object.scale.x = position.x;
+	// 	object.scale.y = position.y;
+	// 	// console.log(mesh.position.x);
+	// });
+	// scale.start();
+
+	// dot.scale.x = (newRandomTone+1)*2;
+	// dot.scale.y = (newRandomTone+1)*2;
+
+
+    // mesh.position.x = newRandomTone*40 - 40;
+    // mesh.position.y = newRandomTone*40 - 40;
+    // mesh.position.z = newRandomTone*40 - 40;
+});
+
+
+
 
 </script></body></html>
